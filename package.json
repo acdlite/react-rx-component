@@ -1,0 +1,49 @@
+{
+  "name": "reactive-react",
+  "version": "0.2.2",
+  "description": "Yet another RxJS library for React :) Create container components (also known as smart components) by transforming a sequence of props",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "make test",
+    "prepublish": "make clean build"
+  },
+  "keywords": [
+    "react",
+    "rx",
+    "rxjs",
+    "reactive",
+    "observable"
+  ],
+  "author": "Andrew Clark <acdlite@me.com>",
+  "bugs": {
+    "url": "https://github.com/acdlite/reactive-react/issues"
+  },
+  "homepage": "https://github.com/acdlite/reactive-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acdlite/reactive-react.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.15",
+    "babel-eslint": "^3.1.20",
+    "babel-plugin-object-assign": "^1.2.0",
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
+    "eslint": "^0.24.0",
+    "eslint-config-airbnb": "0.0.6",
+    "eslint-plugin-react": "^2.6.4",
+    "jsdom": "^5.6.0",
+    "mocha": "^2.2.5",
+    "mocha-jsdom": "^1.0.0",
+    "react": "^0.13.3",
+    "rx": "^2.5.3",
+    "sinon": "^1.15.4",
+    "transducers-js": "^0.4.174",
+    "transducers.js": "^0.3.2"
+  },
+  "dependencies": {
+    "react-pure-render": "^1.0.2"
+  }
+}
