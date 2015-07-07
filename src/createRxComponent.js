@@ -10,17 +10,17 @@ function unwrapLast(o$) {
 
 export default function createRxComponent(mapProps, render) {
   return class extends Component {
-    constructor(props) {
-      super(props);
+    constructor(props, context) {
+      super(props, context);
 
-      // Used to receive props from owners
-      this.pushProps$ = funcSubject();
+      // Used to receive props and context from owner
+      this.receive$ = funcSubject();
 
-      // Sequence of props received from owner
-      this.props$ = this.pushProps$.startWith(props);
+      this.props$ = this.receive$.map(x => x[0]).startWith(props);
+      this.context$ = this.receive$.map(x => x[1]).startWith(context);
 
       // Sequence of child props
-      this.childProps$ = mapProps(this.props$);
+      this.childProps$ = mapProps(this.props$, this.context$);
 
       // Get the initial child props so it works on the first render
       // Especially important for server-side rendering
@@ -36,9 +36,9 @@ export default function createRxComponent(mapProps, render) {
       );
     }
 
-    componentWillReceiveProps(newProps) {
-      // Receive new props from the owner
-      this.pushProps$(newProps);
+    componentWillReceiveProps(nextProps, nextContext) {
+      // Receive new props and context from the owner
+      this.receive$([ nextProps, nextContext ]);
     }
 
     shouldComponentUpdate = shouldPureComponentUpdate;

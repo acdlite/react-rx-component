@@ -1,5 +1,5 @@
 import { createRxComponent, funcSubject } from '../';
-import React from 'react/addons';
+import React, { Component, PropTypes } from 'react/addons';
 import { Observable } from 'rx';
 import jsdom from './jsdom';
 import sinon from 'sinon';
@@ -92,5 +92,37 @@ describe('createRxComponent', () => {
     expect(div.props.children).to.equal('Count');
     container.setState({ label: 'Current count' });
     expect(div.props.children).to.equal('Current count');
+  });
+
+  it('receive context updates', () => {
+    const SmartComponent = createRxComponent(((props$, context$) => {
+      return Observable.combineLatest(props$, context$, (props, context) => ({
+        ...props,
+        ...context
+      }));
+    }), props => <div {...props} />);
+
+    SmartComponent.contextTypes = { redux: PropTypes.string };
+
+    class ContextComponent extends Component {
+      state = { redux: 'redux' }
+
+      getChildContext() {
+        return { redux: this.state.redux };
+      }
+
+      static childContextTypes = { redux: PropTypes.string }
+
+      render() {
+        return <SmartComponent />;
+      }
+    }
+
+    const container = TestUtils.renderIntoDocument(<ContextComponent />);
+    const div = TestUtils.findRenderedDOMComponentWithTag(container, 'div');
+
+    expect(div.props.redux).to.equal('redux');
+    container.setState({ redux: 'store' });
+    expect(div.props.redux).to.equal('store');
   });
 });
