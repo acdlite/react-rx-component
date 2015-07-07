@@ -1,5 +1,5 @@
 {
-  "name": "reactive-react",
+  "name": "react-rx-component",
   "version": "0.1.0",
   "description": "Yet another RxJS library for React :) Create container components (also known as smart components) by transforming a sequence of props",
   "main": "lib/index.js",
@@ -16,12 +16,12 @@
   ],
   "author": "Andrew Clark <acdlite@me.com>",
   "bugs": {
-    "url": "https://github.com/acdlite/reactive-react/issues"
+    "url": "https://github.com/acdlite/react-rx-component/issues"
   },
-  "homepage": "https://github.com/acdlite/reactive-react",
+  "homepage": "https://github.com/acdlite/react-rx-component",
   "repository": {
     "type": "git",
-    "url": "https://github.com/acdlite/reactive-react.git"
+    "url": "https://github.com/acdlite/react-rx-component.git"
   },
   "license": "MIT",
   "devDependencies": {

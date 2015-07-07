@@ -1,4 +1,4 @@
-reactive-react
+react-rx-component
 ==============
 
 Yet another RxJS library for React :)
@@ -11,9 +11,9 @@ React is all about state management. One of the biggest traps new React develope
 
 A common strategy is to separate your app into **smart** and **dumb** components. Smart components take care of state management, subscriptions, and other messy stuff, then pass props along to its children. The children are dumb components, which have no state, and merely return elements for given props.
 
-**reactive-react lets you create "stateful" smart components without ever using `setState()`**. Using the RxJS library, transform an observable sequence of props received from the owner into a sequence of props to be passed to children. This is the essence of what all smart components do — take some props from the owner, combine it with some local state, and sanitize the result by passing it down as nice, clean props.
+**react-rx-component lets you create "stateful" smart components without ever using `setState()`**. Using the RxJS library, transform an observable sequence of props received from the owner into a sequence of props to be passed to children. This is the essence of what all smart components do — take some props from the owner, combine it with some local state, and sanitize the result by passing it down as nice, clean props.
 
-To illustrate, let's compare how to create a simple counter the normal way and with reactive-react.
+To illustrate, let's compare how to create a simple counter the normal way and with react-rx-component.
 
 First, the normal way. We'll follow best practices by separating our counter into smart and dumb components:
 
@@ -49,10 +49,10 @@ class Counter extends React.Component {
 }
 ```
 
-And now let's implement this same functionality with reactive-react. Inline comments show how certain parts correspond to the normal version:
+And now let's implement this same functionality with react-rx-component. Inline comments show how certain parts correspond to the normal version:
 
 ```js
-const CounterContainer = createSmartComponent((props$ => {
+const CounterContainer = createRxComponent((props$ => {
   const increment$ = funcSubject(); // handleIncrement
   const count$ = increment$
     .startWith(0) // state = { count: 0 }
@@ -99,10 +99,10 @@ Other benefits include:
 ## API
 
 ```js
-import { createSmartComponent, funcSubject } from 'reactive-react';
+import { createRxComponent, funcSubject } from 'react-rx-component';
 ```
 
-### `createSmartComponent(mapProps, ?render)`
+### `createRxComponent(mapProps, ?render)`
 
 Creates a React Component. Use this instead of `React.createClass()` or extending `React.Component`.
 
@@ -143,4 +143,4 @@ The idea for this function is borrowed from [rx-react](https://github.com/fdecam
 
 - [**Cycle**](cycle.js.org). Cycle is a React-like, fully reactive library with a hard dependency on RxJS. I don't have much experience with Cycle, but what I do know is all very positive and exciting. The biggest downside for me is that it's not React :) The goal of this library is to incorporate reactive concepts without breaking compatibility with the larger React ecosystem.
 - [**Cycle**](https://github.com/pH200/cycle-react) An port of Cycle's API to React.
-- [**rx-react**](https://github.com/fdecampredon/rx-react) — A collection of mixins and helpers for working with React and RxJS. Rather than using mixins, reactive-react focuses on helping you create entire components using only observables and pure functions. As mentioned above, `funcSubject()` is borrowed from this library.
+- [**rx-react**](https://github.com/fdecampredon/rx-react) — A collection of mixins and helpers for working with React and RxJS. Rather than using mixins, react-rx-component focuses on helping you create entire components using only observables and pure functions. As mentioned above, `funcSubject()` is borrowed from this library.

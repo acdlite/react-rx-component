@@ -1,4 +1,4 @@
-import { createSmartComponent, funcSubject } from '../';
+import { createRxComponent, funcSubject } from '../';
 import React from 'react/addons';
 import { Observable } from 'rx';
 import jsdom from './jsdom';
@@ -7,7 +7,7 @@ import sinon from 'sinon';
 const { TestUtils } = React.addons;
 
 function createSmartButton(render) {
-  return createSmartComponent((props$ => {
+  return createRxComponent((props$ => {
     const increment$ = funcSubject();
     const count$ = increment$
       .startWith(0)
@@ -33,7 +33,7 @@ function testSmartButton(element) {
   expect(button.props.pass).to.equal('through');
 }
 
-describe('createSmartComponent', () => {
+describe('createRxComponent', () => {
   jsdom();
 
   it('creates a smart React component by transforming a stream of props', () => {

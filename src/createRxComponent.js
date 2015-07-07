@@ -8,7 +8,7 @@ function unwrapLast(o$) {
   return value;
 }
 
-export default function createSmartComponent(mapProps, render) {
+export default function createRxComponent(mapProps, render) {
   return class extends Component {
     constructor(props) {
       super(props);
