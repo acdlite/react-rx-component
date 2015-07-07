@@ -1,9 +1,16 @@
 react-rx-component
-==============
+==================
+
+[![build status](https://img.shields.io/travis/acdlite/react-rx-component/master.svg?style=flat-square)](https://travis-ci.org/acdlite/react-rx-component)
+[![npm version](https://img.shields.io/npm/v/react-rx-component.svg?style=flat-square)](https://www.npmjs.com/package/react-rx-component)
 
 Yet another RxJS library for React :)
 
 Create **smart components** — also known as container components — using RxJS observables.
+
+```
+npm install --save react-rx-component
+```
 
 ## Don't `setState()` — transform props
 
