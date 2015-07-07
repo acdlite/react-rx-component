@@ -1,6 +1,6 @@
 {
   "name": "react-rx-component",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Yet another RxJS library for React :) Create container components (also known as smart components) by transforming a sequence of props",
   "main": "lib/index.js",
   "scripts": {
