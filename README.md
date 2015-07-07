@@ -61,7 +61,7 @@ class Counter extends React.Component {
 And now let's implement this same functionality with react-rx-component. Inline comments show how certain parts correspond to the normal version:
 
 ```js
-const CounterContainer = createRxComponent((props$ => {
+const CounterContainer = createRxComponent(props$ => {
   const increment$ = funcSubject(); // handleIncrement
   const count$ = increment$
     .startWith(0) // state = { count: 0 }
@@ -72,7 +72,7 @@ const CounterContainer = createRxComponent((props$ => {
     increment: increment$,
     count
   }));
-}), Counter);
+}, Counter);
 
 // In a future version of React, pure functions like this are valid components
 // https://github.com/facebook/react/pull/3995
