@@ -151,5 +151,5 @@ The idea for this function is borrowed from [rx-react](https://github.com/fdecam
 ## Comparison to other libraries
 
 - [**Cycle**](cycle.js.org) — Cycle is a React-like, fully reactive library with a hard dependency on RxJS. I don't have much experience with Cycle, but what I do know is all very positive and exciting. The biggest downside for me is that it's not React :) The goal of this library is to incorporate reactive concepts without breaking compatibility with the larger React ecosystem.
-- [**cycle-react**](https://github.com/pH200/cycle-react) — An port of Cycle's API to React.
+- [**cycle-react**](https://github.com/pH200/cycle-react) — A port of Cycle's API to React.
 - [**rx-react**](https://github.com/fdecampredon/rx-react) — A collection of mixins and helpers for working with React and RxJS. Rather than using mixins, react-rx-component focuses on helping you create entire components using only observables and pure functions. As mentioned above, `funcSubject()` is borrowed from this library.
