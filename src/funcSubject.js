@@ -1,5 +1,7 @@
 import { Subject } from 'rx';
 
+// Idea and implementation borrowed from
+// https://github.com/fdecampredon/rx-react
 export default function funcSubject() {
   function subject(value) {
     subject.onNext(value);

@@ -1,6 +1,6 @@
 {
   "name": "reactive-react",
-  "version": "0.2.2",
+  "version": "0.1.0",
   "description": "Yet another RxJS library for React :) Create container components (also known as smart components) by transforming a sequence of props",
   "main": "lib/index.js",
   "scripts": {

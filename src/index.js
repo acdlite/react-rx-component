@@ -1,7 +1,7 @@
-import createComponent from './createComponent';
+import createSmartComponent from './createSmartComponent';
 import funcSubject from './funcSubject';
 
 export {
-  createComponent,
+  createSmartComponent,
   funcSubject
 };

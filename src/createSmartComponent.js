@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { funcSubject } from './';
 
@@ -8,7 +8,7 @@ function unwrapLast(o$) {
   return value;
 }
 
-export default function createComponent(createChildPropsSeq, render) {
+export default function createSmartComponent(mapProps, render) {
   return class extends Component {
     constructor(props) {
       super(props);
@@ -20,12 +20,11 @@ export default function createComponent(createChildPropsSeq, render) {
       this.props$ = this.pushProps$.startWith(props);
 
       // Sequence of child props
-      this.childProps$ = createChildPropsSeq(this.props$);
+      this.childProps$ = mapProps(this.props$);
 
-      this.state = {
-        // Get the initial state
-        childProps: unwrapLast(this.childProps$)
-      };
+      // Get the initial child props so it works on the first render
+      // Especially important for server-side rendering
+      this.state = unwrapLast(this.childProps$);
     }
 
     componentDidMount() {
@@ -33,7 +32,7 @@ export default function createComponent(createChildPropsSeq, render) {
       // Skip the first set of props, which were already rendered
       this.subscription = this.childProps$.skip(1).subscribe(
         // Use setState to trigger a re-render
-        childProps => this.setState({ childProps })
+        childProps => this.setState(childProps)
       );
     }
 
@@ -50,7 +49,7 @@ export default function createComponent(createChildPropsSeq, render) {
     }
 
     render() {
-      const { childProps } = this.state;
+      const childProps = this.state;
       const { children } = this.props;
 
       if (typeof render === 'function') {
