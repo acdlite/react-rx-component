@@ -121,13 +121,15 @@ Creates a React Component. Use this instead of `React.createClass()` or extendin
 props$ => childProps$
 ```
 
+**NOTE** `mapProps()` also receives a sequence of contexts as the second parameter.
+
 `render()` is the same `render()` you know and love — a function that maps child props to a React element:
 
 ```
 props => vdom
 ```
 
-The resulting component *is* a subclass of `React.Component`, so you can set `defaultProps` and `propTypes` like normal.
+The resulting component *is* a subclass of `React.Component`, so you can set `propTypes` and `contextTypes` like normal.
 
 #### Why the extra step? Why not return a sequence of vdom?
 
