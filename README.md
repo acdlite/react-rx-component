@@ -18,7 +18,9 @@ React is all about state management. One of the biggest traps new React develope
 
 A common strategy is to separate your app into **smart** and **dumb** components. Smart components take care of state management, subscriptions, and other messy stuff, then pass props along to its children. The children are dumb components, which have no state, and merely return elements for given props.
 
-**react-rx-component lets you create "stateful" smart components without ever using `setState()`**. Using the RxJS library, transform an observable sequence of props received from the owner into a sequence of props to be passed to children. This is the essence of what all smart components do — take some props from the owner, combine it with some local state, and sanitize the result by passing it down as nice, clean props.
+**react-rx-component lets you create "stateful" smart components without ever using `setState()`**.
+
+Using the RxJS library, transform an observable sequence of props received from the owner into a sequence of props to be passed to children. This is the essence of what all smart components do — take some props from the owner, combine it with some local state, and sanitize the result by passing it down as nice, clean props.
 
 To illustrate, let's compare how to create a simple counter the normal way and with react-rx-component.
 
