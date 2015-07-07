@@ -1,0 +1,31 @@
+<![CDATA[
+<p>Hi, I&#8217;m Sean, the newest member on the Bitbucket team. I currently work on <a class="external-link" href="http://mercurial.selenic.com/" target="_blank" rel="nofollow">Mercurial</a> but come from a scientific background with the <a class="external-link" href="http://www.mcs.anl.gov/petsc" target="_blank" rel="nofollow">PETSc</a> team. My responsibilities here are working on the backend but what I&#8217;m most excited about is improving Mercurial support.</p> <p>I&#8217;ve been a contributor to Mercurial for <span class="inline-comment-marker">about three years</span> and have loved Mercurial for its human-friendly user interface and supportive community. Some of my work for Mercurial includes the addition of namespaces and improving the in-memory context object. I also wrote the experimental <a class="external-link" href="https://bitbucket.org/seanfarley/hgremotenames" target="_blank" rel="nofollow">remotenames extension</a> (to be added to core Mercurial in the future) and the most fun <a class="external-link" href="http://youtu.be/qtAuQXeQrMQ" target="_blank" rel="nofollow">smb extension</a>.</p> <p><strong>The future of Mercurial</strong></p> <p>In my time with Mercurial, I have seen it grow in fascinating ways. These include the concept of changeset evolution coming to life and the announcement of Facebook choosing Mercurial over Git. The future of Mercurial is that of scalability and because of that, <span class="inline-comment-marker">I believe the best days of Mercurial are ahead</span>.</p> <p><strong>Mercurial 3.4 Sprint at PyCon</strong></p> <p>Here at Bitbucket, with the support of the team, I&#8217;d like to build up relations with the community and the first step was attending the <a class="external-link" href="http://mercurial.selenic.com/wiki/3.4sprint" target="_blank" rel="nofollow">Mercurial 3.4 Sprint</a> at PyCon in Montreal this year. There were many topics discussed: new manifest version, narrow checkouts, commit signing, obsolescence marker exchange, evolve UI, reflog equivalent, new path options, and remote bookmarks. Of these topics, manifests received the most attention. A new manifest format means we can enable checkouts of only a subdirectory (called a &#8216;narrow&#8217; checkout). On top of that, it opens the door for only retrieving a truncated history (called a &#8216;shallow&#8217; checkout). My personal favorites are the inclusion of remote bookmarks that will be built on top of the journal i.e. reflog equivalent, and the new path features i.e. the ability to define a custom revset for pushing to a particular path.</p> <p>Here are some pictures from the event (photos by Ryan McElroy and me):</p> <p><a href="http://blog.bitbucket.org/files/2015/04/642A1146.jpg" rel="lightbox[2473]"><img class="alignnone size-large wp-image-2474" src="http://blog.bitbucket.org/files/2015/04/642A1146-1024x562.jpg" alt="Mercurial" width="640" height="351" /></a></p> <p><a href="http://blog.bitbucket.org/files/2015/04/642A1170.jpg" rel="lightbox[2473]"><img class="alignnone size-large wp-image-2475" src="http://blog.bitbucket.org/files/2015/04/642A1170-1024x683.jpg" alt="Mercurial" width="640" height="427" /></a></p> <p><a href="http://blog.bitbucket.org/files/2015/04/Mercurial-3.jpeg" rel="lightbox[2473]"><img class="alignnone size-full wp-image-2476" src="http://blog.bitbucket.org/files/2015/04/Mercurial-3.jpeg" alt="Mercurial" width="600" height="450" /></a></p> <p><strong>Celebrating Mercurial&#8217;s 10th anniversary</strong></p> <p>Now that I am here, with the support of Atlassian and the Bitbucket team, we will be improving relations with the Mercurial community by hosting many events this year. We begin with celebrating Mercurial&#8217;s 10th anniversary on Wed, May 6th by hosting the first official <a class="external-link" href="http://www.meetup.com/Bay-Area-Mercurial-Meetup/" target="_blank" rel="nofollow">Bay Area Mercurial Meetup</a> at Atlassian&#8217;s San Francisco office. We will have speakers from Google to talk about scaling Mercurial and Facebook to talk about why they picked Mercurial as <em>the</em> version control system and what this means for the future of Mercurial. <a href="http://www.meetup.com/Bay-Area-Mercurial-Meetup/events/222139518/">Register immediately</a> if you are interested since we can only accommodate 100 attendees. We look forward to seeing you next week with the rest of the Mercurial community.</p> <p>[*Note: An earlier version had accidentally stated that Google had chosen Mercurial over Git but that is untrue. Google is working on Mercurial scalability, but also uses Git and contributes to Git development.]</p>
+]]>
+</content:encoded>
+<wfw:commentRss>
+http://blog.bitbucket.org/2015/04/30/mercurial-onward-and-upward/feed/
+</wfw:commentRss>
+<slash:comments>9</slash:comments>
+</item>
+<item>
+<title>Fare-thee-well, Digest access authentication</title>
+<link>
+http://blog.bitbucket.org/2015/04/03/fare-thee-well-digest-access-authentication/
+</link>
+<comments>
+http://blog.bitbucket.org/2015/04/03/fare-thee-well-digest-access-authentication/#comments
+</comments>
+<pubDate>Fri, 03 Apr 2015 14:03:09 +0000</pubDate>
+<dc:creator>
+<![CDATA[ Ike DeLorenzo ]]>
+</dc:creator>
+<category>
+<![CDATA[ bitbucket ]]>
+</category>
+<category>
+<![CDATA[ security ]]>
+</category>
+<guid isPermaLink="false">https://blog.bitbucket.org/?p=2458</guid>
+<description>
+<![CDATA[
+Today, we are deprecating support for Digest access authentication, or &#8220;Digest auth&#8221; on Bitbucket. Digest auth support is currently slated to be turned off on May 1st, 2015. What is Digest authentication? Digest auth (RFC-2617) is one of the
