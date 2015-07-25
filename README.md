@@ -9,7 +9,7 @@ Yet another RxJS library for React :)
 Create **smart components** — also known as container components — using RxJS observables.
 
 ```
-npm install --save react-rx-component
+npm install --save react-rx-component rx
 ```
 
 ## Don't `setState()` — transform props
