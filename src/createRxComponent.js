@@ -1,8 +1,16 @@
-import { Component } from 'react';
+import { Component, createElement } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { funcSubject } from './';
 
-export default function createRxComponent(mapProps, render) {
+function isReactComponent(c) {
+  return c && c.prototype && typeof c.prototype.render === 'function';
+}
+
+function createRxComponent(mapProps, renderOrComponent) {
+  const render = isReactComponent(renderOrComponent)
+    ? props => createElement(renderOrComponent, props)
+    : renderOrComponent;
+
   return class extends Component {
     constructor(props, context) {
       super(props, context);
@@ -46,15 +54,17 @@ export default function createRxComponent(mapProps, render) {
 
     render() {
       const childProps = this.state;
-      const { children } = this.props;
-
-      if (typeof render === 'function') {
-        return render(childProps);
-      }
-
-      if (typeof children === 'function') {
-        return children(childProps);
-      }
+      return render(childProps);
     }
   };
 }
+
+// Stupidly basic curry function
+function curry(func) {
+  return (a, b) =>
+    typeof b === 'undefined'
+      ? c => func(a, c)
+      : func(a, b);
+}
+
+export default curry(createRxComponent);

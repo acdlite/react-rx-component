@@ -111,38 +111,54 @@ Other benefits include:
 import { createRxComponent, funcSubject } from 'react-rx-component';
 ```
 
-### `createRxComponent(mapProps, ?render)`
+### `createRxComponent(mapProps)`
+### `createRxComponent(mapProps, render)`
+### `createRxComponent(mapProps, Component)`
 
-Creates a React Component. Use this instead of `React.createClass()` or extending `React.Component`.
+Creates a React Component or a higher-order component. Use this instead of `React.createClass()` or extending `React.Component`.
 
 `mapProps()` is a function that maps an observable sequence of props to a sequence of child props, like so:
 
-```
+```js
 props$ => childProps$
 ```
 
 **NOTE** `mapProps()` also receives a sequence of contexts as the second parameter.
 
-`render()` is the same `render()` you know and love — a function that maps child props to a React element:
+`createRxComponent()` can be passed a render function or a React component. A render function is a function that maps child props to a React element:
 
-```
+```js
 props => vdom
+```
+
+Passing a React component is effectively the same as passing a render function that looks like this:
+
+```js
+props => <Component {...props} />
 ```
 
 The resulting component *is* a subclass of `React.Component`, so you can set `propTypes` and `contextTypes` like normal.
 
-#### Why the extra step? Why not return a sequence of vdom?
-
-You may be wondering why we don't just combine the two steps and map directly from a sequence of props to a sequence of React elements:
-
-- Internally, the separation allows us to prevent unnecessary renders using `shouldComponentUpdate()`. If the same set of props are broadcast multiple times, there are no extra renders.
-- If the `render()` parameter is omitted, the smart component will use a child function instead. You may be familiar with this pattern from [Redux](https://github.com/gaearon/redux) or [React Animation](https://github.com/chenglou/react-animation):
+Alternatively, you can choose to omit the second parameter. In this case, a higher-order component is returned instead of a normal React component. E.g.
 
 ```js
-<SmartComponent>
-  {props => <DumbComponent {...props} />}
-</SmartComponent>
+const higherOrderComponent = createRxComponent(mapProps);
+
+class MyComponent extends React.Component {...}
+
+export default higherOrderComponent(MyComponent);
 ```
+
+You can also use it as a decorator:
+
+```js
+@createRxComponent(mapProps)
+export default class MyComponent extends React.Component {...}
+```
+
+#### Why the extra step? Why not return a sequence of vdom?
+
+You may be wondering why we don't just combine the two steps and map directly from a sequence of props to a sequence of React elements. Internally, the separation allows us to prevent unnecessary renders using `shouldComponentUpdate()`. If the same set of props are broadcast multiple times, there are no extra renders.
 
 ### `funcSubject()`
 

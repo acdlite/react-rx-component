@@ -62,26 +62,38 @@ describe('createRxComponent', () => {
     expect(button.props.count).to.equal(0);
   });
 
-  it('resulting component uses this.props.children as render function if none passed', () => {
-    const SmartButton = createSmartButton();
-    testSmartButton(
-      <SmartButton pass="through">
-        {props => <button {...props} />}
-      </SmartButton>
-    );
+  it('can be passed a component class', () => {
+    const SmartButton = createSmartButton(class extends React.Component {
+      render() {
+        return <button {...this.props} />;
+      }
+    });
+
+    testSmartButton(<SmartButton pass="through" />);
+  });
+
+  it('is curried so it can be used as a higher-order component', () => {
+    const SmartButtonDecorator = createSmartButton();
+
+    @SmartButtonDecorator
+    class Button extends React.Component {
+      render() {
+        return <button {...this.props} />;
+      }
+    }
+
+    testSmartButton(<Button pass="through" />);
   });
 
   it('receives prop updates', () => {
-    const SmartButton = createSmartButton();
+    const SmartButton = createSmartButton(props => <div>{props.label}</div>);
 
     class SmartButtonContainer extends React.Component {
       state = { label: 'Count' }
 
       render() {
         return (
-          <SmartButton label={this.state.label}>
-            {props => <div>{props.label}</div>}
-          </SmartButton>
+          <SmartButton label={this.state.label} />
         );
       }
     }
