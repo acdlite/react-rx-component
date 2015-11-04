@@ -1,6 +1,11 @@
 react-rx-component
 ==================
 
+## DEPRECATED
+
+**This project has been superseded by [rx-recompose](https://github.com/acdlite/recompose/tree/master/src/packages/rx-recompose).**
+
+
 [![build status](https://img.shields.io/travis/acdlite/react-rx-component/master.svg?style=flat-square)](https://travis-ci.org/acdlite/react-rx-component)
 [![npm version](https://img.shields.io/npm/v/react-rx-component.svg?style=flat-square)](https://www.npmjs.com/package/react-rx-component)
 
